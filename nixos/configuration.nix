@@ -78,11 +78,12 @@
     git
     gh
     htop
+    evil-helix
   ];
 
   environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "hx";
+    VISUAL = "hx";
   };
   programs.neovim.enable = true;
 
@@ -96,8 +97,21 @@
 
   # List services that you want to enable:
 
+  # Oops, this only works with home-manager
+# programs.git = {
+#   enable = true;
+#   userName = "DuckInTub";
+#   userEmail = "icebl0804@gmail.com";
+#   aliases = {
+#     ci = "commit";
+#     s = "status";
+#     p = "push";
+#   };
+# };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
 
   networking = {
     interfaces.enp5s0 = {

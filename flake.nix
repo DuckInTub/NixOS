@@ -22,13 +22,16 @@
     system = "x86_64-linux";
     user = "isak";
   in {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem = {
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
-    };
+  nixosConfigurations = {
+    nixos = nixpkgs.lib.nixosSystem {
+      system = system;
+      modules = [
+        ./nixos/configuration.nix
+      ];
+  };
+};
+
+
   };
 
 }
