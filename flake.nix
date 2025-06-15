@@ -21,9 +21,10 @@
   let 
     system = "x86_64-linux";
     user = "isak";
+    hosts = [ "isak-laptop" "isak-pc" ];
   in {
   nixosConfigurations = {
-    nixos = nixpkgs.lib.nixosSystem {
+    "isak-laptop" = nixpkgs.lib.nixosSystem {
       system = system;
       modules = [
         ./nixos/configuration.nix

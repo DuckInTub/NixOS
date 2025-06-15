@@ -15,6 +15,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "isak-laptop"; # Define your hostname.
+  # system.nixos.label = "Test-label"; # Changes part of the boot label
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -78,13 +79,10 @@
     git
     gh
     htop
-    evil-helix
+    alejandra
+    nh
   ];
 
-  environment.variables = {
-    EDITOR = "hx";
-    VISUAL = "hx";
-  };
   programs.neovim.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
