@@ -21,9 +21,8 @@
   services.xserver.xkb = {
     layout = "se,gb";
     variant = "";
-    xkbOptions = "grp:win_space_toggle";
+    xkbOptions = "grp:win_space_toggle"; # Set super+space to switch kb-layout
   };
 
-  # Configure console keymap
-  console.keyMap = "uk";
+  console.keyMap = "uk"; # Configure console keymap
 }

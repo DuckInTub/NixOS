@@ -16,18 +16,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Hostnames for main Arch-machine
-  networking.hosts = {
-    "169.254.1.1" = ["arch"];
-  };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.isak = {
     isNormalUser = true;
@@ -42,7 +30,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget an editor!
+    neovim # WARN: Do not forget an editor!
     wget
     acpi
     git
@@ -52,7 +40,12 @@
     nh
   ];
 
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -75,20 +68,6 @@
   #     p = "push";
   #   };
   # };
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  networking = {
-    interfaces.enp5s0 = {
-      ipv4.addresses = [
-        {
-          address = "169.254.1.60";
-          prefixLength = 16;
-        }
-      ];
-    };
-  };
 
   services.logind = {
     lidSwitch = "ignore";
