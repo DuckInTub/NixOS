@@ -1,5 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
+# Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
@@ -16,32 +15,12 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.isak = {
-    isNormalUser = true;
-    description = "Isak";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [];
-  };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     vimAlias = true;
     viAlias = true;
   };
-
-  # Oops, this only works with home-manager
-  # programs.git = {
-  #   enable = true;
-  #   userName = "DuckInTub";
-  #   userEmail = "icebl0804@gmail.com";
-  #   aliases = {
-  #     ci = "commit";
-  #     s = "status";
-  #     p = "push";
-  #   };
-  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
