@@ -31,7 +31,7 @@
       "isak-laptop" = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs nixpkgs nixpkgs-unstable home-manager;};
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/isak-laptop/configuration.nix
         ];
       };
     };
