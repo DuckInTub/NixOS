@@ -26,6 +26,7 @@
     system = "x86_64-linux";
     user = "isak";
     hosts = ["isak-laptop" "isak-pc"];
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       "isak-laptop" = nixpkgs.lib.nixosSystem {
@@ -34,6 +35,17 @@
           ./hosts/isak-laptop/configuration.nix
         ];
       };
+    };
+
+    homeConfigurations."isak" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [./home-manager/home.nix];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
     };
   };
 }
