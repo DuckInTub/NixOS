@@ -25,7 +25,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     user = "isak";
-    hosts = ["isak-laptop" "isak-pc"];
+    hosts = ["isak-laptop" "isak-pc" "isak-server"];
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {

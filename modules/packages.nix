@@ -12,20 +12,28 @@
     librewolf
     mpv
     super-productivity
+    wofi
     xfce.thunar
 
     # CLI
     acpi
     alejandra
     btop
+    brightnessctl
     dropbox
+    fd
     fzf
     gh
     git
+    gcc
     neovim # WARN: Do not forget an editor!
     nh
+    nixd
     pfetch-rs
+    playerctl
+    ripgrep
     tailscale
+    tmux
     wget
     wl-clipboard
   ];
