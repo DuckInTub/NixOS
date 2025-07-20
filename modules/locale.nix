@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
@@ -17,26 +17,5 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "se,gb";
-  #   variant = "";
-  #   xkbOptions = "grp:win_space_toggle"; # Set super+space to switch kb-layout
-  # };
-  #
   console.keyMap = "uk"; # Configure console keymap
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.hack
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-color-emoji
-    ];
-
-    fontconfig.allowBitmaps = false;
-    fontconfig.defaultFonts.monospace = ["Hack Nerd Font"];
-    fontconfig.defaultFonts.emoji = ["Noto Color Emoji"];
-  };
 }

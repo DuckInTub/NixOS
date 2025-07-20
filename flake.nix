@@ -27,23 +27,21 @@
     user = "isak";
     hosts = ["isak-laptop" "isak-pc" "isak-server"];
     pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    nixosConfigurations = {
-      "isak-laptop" = nixpkgs.lib.nixosSystem {
+    makeSystem = hostname: {
+      "${hostname}" = nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = {inherit inputs nixpkgs nixpkgs-unstable home-manager;};
         modules = [
-          ./hosts/isak-laptop/configuration.nix
+          ./hosts/${hostname}/configuration.nix
         ];
       };
     };
+  in {
+    nixosConfigurations = nixpkgs.lib.mergeAttrsList (map makeSystem hosts);
 
-    homeConfigurations."isak" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
       modules = [./home-manager/home.nix];
-
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
     };

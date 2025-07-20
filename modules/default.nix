@@ -2,6 +2,7 @@
   imports = [
     ./audio.nix
     ./bootloader.nix
+    ./fonts.nix
     ./hyprland.nix
     ./locale.nix
     ./networking.nix
