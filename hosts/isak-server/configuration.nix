@@ -31,10 +31,16 @@
     nextcloud = {
       enable = true;
       hostName = "nextcloud.isak-server.local";
-      autoUpdateApps = true;
-      config.adminpassFile = "/etc/nextcloud-admin-pass";
+      autoUpdateApps.enable = true;
+      database.createLocally = true;
+      config = {
+        adminpassFile = "/etc/nextcloud-admin-pass";
+        dbtype = "sqlite";
+      };
     };
+
     tailscale.enable = true;
+
     jellyfin.enable = true;
   };
 
