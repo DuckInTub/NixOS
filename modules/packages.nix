@@ -33,6 +33,7 @@
     playerctl
     ripgrep
     tailscale
+    sqlite
     tmux
     wget
     wl-clipboard

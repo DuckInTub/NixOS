@@ -5,9 +5,11 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  hostnames = ["localhost" "192.168.50.252" "nextcloud.isak-server.local" "server"];
+in {
   imports = [
-    # Include the results of the hardware scan.
+    # Include the results of the hardware sncan.
     ./hardware-configuration.nix
     ../../modules/bootloader.nix
     ../../modules/locale.nix
@@ -25,18 +27,34 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  networking.firewall.enable = false;
+
   # Tailscale, e-books, media-server, pi-hole, nextcloud, overleaf-ce
 
+  environment.etc."nextcloud-admin-pass".text = "0520";
   services = {
     nextcloud = {
       enable = true;
-      hostName = "nextcloud.isak-server.local";
+      hostName = "localhost";
+      https = true;
       autoUpdateApps.enable = true;
       database.createLocally = true;
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
         dbtype = "sqlite";
       };
+      settings = {
+        trusted_domains = hostnames;
+      };
+    };
+
+    nginx.virtualHosts."localhost" = {
+      forceSSL = true;
+      serverAliases = hostnames;
     };
 
     tailscale.enable = true;
