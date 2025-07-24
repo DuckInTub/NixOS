@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   hostnames = ["localhost" "192.168.50.252" "nextcloud.isak-server.local" "server"];
@@ -19,7 +20,19 @@ in {
     ../../modules/user.nix
   ];
 
+  networking.hostName = "isak-server"; # Define your hostname.
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  environment.systemPackages = with pkgs; [
+    jellyfin
+    jellyfin-ffmpeg
+    jellyfin-web
+
+    pihole
+    pihole-web
+    pihole-ftl
+  ];
 
   # Enable networking through networkmanager
   networking.networkmanager.enable = true;
@@ -55,11 +68,23 @@ in {
     nginx.virtualHosts."localhost" = {
       forceSSL = true;
       serverAliases = hostnames;
+      # WARN: Make sure this key and cert exists with openssl.
+      sslCertificate = "/etc/ssl/certs/localhost/cert.pem";
+      sslCertificateKey = "/etc/ssl/private/key.pem";
     };
 
     tailscale.enable = true;
 
     jellyfin.enable = true;
+  };
+
+  services = {
+    pihole-web.enable = true;
+    pihole-web.ports = [8000];
+  };
+
+  systemd.services.nginx.serviceConfig = {
+    ReadOnlyPaths = "/ect/ssl/private /ect/ssl/cert/localhost";
   };
 
   # This value determines the NixOS release from which the default
