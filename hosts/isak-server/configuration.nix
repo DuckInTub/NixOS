@@ -5,6 +5,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: let
   hostnames = ["localhost" "192.168.50.252" "nextcloud.isak-server.local" "server"];
@@ -76,11 +77,22 @@ in {
     tailscale.enable = true;
 
     jellyfin.enable = true;
-  };
 
-  services = {
     pihole-web.enable = true;
     pihole-web.ports = [8000];
+
+    pihole-ftl = {
+      enable = true;
+      settings = {
+        dns.upstreams = ["1.1.1.1" "1.0.0.1"];
+      };
+      lists = [
+        {
+          description = "StevenBlack list";
+          url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+        }
+      ];
+    };
   };
 
   systemd.services.nginx.serviceConfig = {
