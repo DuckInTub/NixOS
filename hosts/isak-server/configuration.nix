@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  hostnames = ["localhost" "192.168.50.252" "nextcloud.isak-server.local" "server"];
+  hostnames = ["localhost" "192.168.200.100" "nextcloud.isak-server.local" "server"];
 in {
   imports = [
     # Include the results of the hardware sncan.
@@ -33,6 +33,7 @@ in {
     pihole
     pihole-web
     pihole-ftl
+    copyparty
   ];
 
   # Enable networking through networkmanager
@@ -51,12 +52,69 @@ in {
 
   environment.etc."nextcloud-admin-pass".text = "0520";
   services = {
+    copyparty = {
+      enable = true;
+      # directly maps to values in the [global] section of the copyparty config.
+      # see `copyparty --help` for available options
+      settings = {
+        i = "0.0.0.0";
+        # use lists to set multiple values
+        p = [3210 3211];
+        # use booleans to set binary flags
+        no-reload = true;
+        # using 'false' will do nothing and omit the value when generating a config
+        ignored-flag = false;
+      };
+
+      # create users
+      accounts = {
+        # specify the account name as the key
+        isak = {
+          # provide the path to a file containing the password, keeping it out of /nix/store
+          # must be readable by the copyparty service user
+          passwordFile = "/run/keys/copyparty/isak_password";
+        };
+      };
+
+      # create a volume
+      volumes = {
+        # create a volume at "/" (the webroot), which will
+        "/" = {
+          # share the contents of "/srv/copyparty"
+          path = "/srv/copyparty";
+          # see `copyparty --help-accounts` for available options
+          access = {
+            # everyone gets read-access, but
+            r = "*";
+            # users "ed" and "k" get read-write
+            rw = ["isak"];
+          };
+          # see `copyparty --help-flags` for available options
+          flags = {
+            # "fk" enables filekeys (necessary for upget permission) (4 chars long)
+            fk = 4;
+            # scan for new files every 60sec
+            scan = 60;
+            # volflag "e2d" enables the uploads database
+            e2d = true;
+            # "d2t" disables multimedia parsers (in case the uploads are malicious)
+            d2t = true;
+            # skips hashing file contents if path matches *.iso
+            nohash = "\.iso$";
+          };
+        };
+      };
+      # you may increase the open file limit for the process
+      openFilesLimit = 8192;
+    };
+
     nextcloud = {
       enable = true;
       hostName = "localhost";
       https = true;
       autoUpdateApps.enable = true;
       database.createLocally = true;
+      extraAppsEnable = true;
       config = {
         adminpassFile = "/etc/nextcloud-admin-pass";
         dbtype = "sqlite";
@@ -83,10 +141,19 @@ in {
 
     pihole-ftl = {
       enable = true;
+      openFirewallDHCP = true;
+      openFirewallDNS = true;
+      openFirewallWebserver = true;
       settings = {
         dns.upstreams = ["1.1.1.1" "1.0.0.1"];
+        files.macvendor = lib.mkForce "/var/lib/pihole/macvendor.db";
+        dns.hosts = ["192.168.200.100 pi.hole" "192.168.200.100 isak-server" "192.168.200.100 server"];
       };
       lists = [
+        {
+          description = "Hagezi recomended";
+          url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt";
+        }
         {
           description = "StevenBlack list";
           url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";

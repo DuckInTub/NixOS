@@ -13,12 +13,16 @@
     # Stylix
 
     # Nixvim
+
+    # Copyparty
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    copyparty,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -28,9 +32,25 @@
       "${hostname}" = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {inherit inputs system user;};
-        modules = [
-          ./hosts/${hostname}/configuration.nix
-        ];
+        modules =
+          [
+            ./hosts/${hostname}/configuration.nix
+          ]
+          ++ (
+            if hostname == "isak-server"
+            then [
+              copyparty.nixosModules.default
+              ({pkgs, ...}: {
+                # add the copyparty overlay to expose the package to the module
+                nixpkgs.overlays = [copyparty.overlays.default];
+                # (optional) install the package globally
+                environment.systemPackages = [pkgs.copyparty];
+                # configure the copyparty module
+                services.copyparty.enable = true;
+              })
+            ]
+            else []
+          );
       };
     };
   in {
