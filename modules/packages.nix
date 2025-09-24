@@ -9,6 +9,8 @@
     alacritty
     anki
     discord
+    fcitx5
+    fcitx5-mozc
     librewolf
     mpv
     super-productivity
@@ -18,20 +20,21 @@
     # CLI
     acpi
     alejandra
-    btop
     brightnessctl
+    btop
     dropbox
     fd
     fzf
+    gcc
     gh
     git
-    gcc
     neovim # WARN: Do not forget an editor!
     nh
     nixd
     pfetch-rs
     playerctl
     ripgrep
+    stow
     tailscale
     tmux
     wget

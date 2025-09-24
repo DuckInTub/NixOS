@@ -18,4 +18,11 @@
   };
 
   console.keyMap = "uk"; # Configure console keymap
+
+  i18n.inputMethod = {
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+    };
+  };
 }
