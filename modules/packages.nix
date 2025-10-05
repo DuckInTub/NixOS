@@ -13,8 +13,11 @@
     fcitx5-mozc
     librewolf
     mpv
+    tofi
+    nwg-look
     super-productivity
     wofi
+    networkmanagerapplet
     xfce.thunar
 
     # CLI
@@ -30,10 +33,12 @@
     git
     neovim # WARN: Do not forget an editor!
     nh
+    swaybg
     nixd
     pfetch-rs
     playerctl
     ripgrep
+    unzip
     stow
     tailscale
     tmux
