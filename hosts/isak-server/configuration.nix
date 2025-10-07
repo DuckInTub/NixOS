@@ -37,18 +37,46 @@ in {
   ];
 
   # Enable networking through networkmanager
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking = {
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [80 443];
+      allowedUDPPorts = [51820];
+    };
+    nat = {
+      enable = true;
+      externalInterface = "enp0s25";
+      internalInterfaces = ["wg0"];
+    };
+    wireguard = {
+      enable = true;
+      interfaces = {
+        wg0 = {
+          ips = ["10.0.0.1/24"];
+          listenPort = 51820;
+          privateKeyFile = "/etc/wireguard/privatekey";
+          peers = [
+            {
+              name = "isak";
+              publicKey = "qjXIrdf8EzCn4S+iIrSQoUnGzW9XPCfuEb3iyzbD3no=";
+              allowedIPs = [
+                "0.0.0.0/0"
+              ];
+              endpoint = "icebl.duckdns.org:51820";
+            }
+          ];
+        };
+      };
+    };
+  };
 
-  # Tailscale, e-books, media-server, pi-hole, nextcloud, overleaf-ce
+  # Tailscale, e-books, media-server, pi-hole, nextcloud, overleaf-ce, nas
 
   environment.etc."nextcloud-admin-pass".text = "0520";
   services = {

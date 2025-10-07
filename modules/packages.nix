@@ -17,6 +17,7 @@
     nwg-look
     super-productivity
     wofi
+    wireguard-tools
     networkmanagerapplet
     xfce.thunar
 
