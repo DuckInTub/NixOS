@@ -52,6 +52,11 @@ in {
 
   environment.etc."nextcloud-admin-pass".text = "0520";
   services = {
+    duckdns = {
+      enable = true;
+      domainsFile = "/etc/duckdns/domain";
+      tokenFile = "/etc/duckdns/token";
+    };
     copyparty = {
       enable = true;
       # directly maps to values in the [global] section of the copyparty config.
