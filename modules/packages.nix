@@ -41,6 +41,7 @@
     unzip
     stow
     tailscale
+    sqlite
     tmux
     wget
     wl-clipboard
