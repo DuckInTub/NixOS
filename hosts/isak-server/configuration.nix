@@ -8,7 +8,7 @@
   lib,
   ...
 }: let
-  hostnames = ["localhost" "192.168.200.100" "nextcloud.isak-server.local" "server"];
+  hostnames = ["localhost" "192.168.200.100" "10.10.0.1"];
 in {
   imports = [
     # Include the results of the hardware sncan.
@@ -58,15 +58,24 @@ in {
       enable = true;
       interfaces = {
         wg0 = {
-          ips = ["10.0.0.1/24"];
+          dynamicEndpointRefreshSeconds = 300;
+          ips = ["10.10.0.1/24"];
           listenPort = 51820;
           privateKeyFile = "/etc/wireguard/privatekey";
           peers = [
             {
-              name = "isak";
+              name = "pc";
               publicKey = "qjXIrdf8EzCn4S+iIrSQoUnGzW9XPCfuEb3iyzbD3no=";
               allowedIPs = [
-                "0.0.0.0/0"
+                "10.10.0.2/32"
+              ];
+              endpoint = "icebl.duckdns.org:51820";
+            }
+            {
+              name = "phone";
+              publicKey = "3SjAXRdPnM5qA2w6sCmp2ho1eqdMRvIP0Va3b7vwDG0=";
+              allowedIPs = [
+                "10.10.0.3/32"
               ];
               endpoint = "icebl.duckdns.org:51820";
             }
@@ -76,7 +85,8 @@ in {
     };
   };
 
-  # Tailscale, e-books, media-server, pi-hole, nextcloud, overleaf-ce, nas
+  # NOTE: Wireguard
+  # e-books, media-server, pi-hole, nextcloud, overleaf-ce, nas
 
   environment.etc."nextcloud-admin-pass".text = "0520";
   services = {
@@ -164,8 +174,6 @@ in {
       sslCertificate = "/etc/ssl/certs/localhost/cert.pem";
       sslCertificateKey = "/etc/ssl/private/key.pem";
     };
-
-    tailscale.enable = true;
 
     jellyfin.enable = true;
 

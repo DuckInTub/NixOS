@@ -41,7 +41,6 @@
     ripgrep
     unzip
     stow
-    tailscale
     sqlite
     tmux
     wget
