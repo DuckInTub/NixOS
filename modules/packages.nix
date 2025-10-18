@@ -9,8 +9,6 @@
     alacritty
     anki
     discord
-    fcitx5
-    fcitx5-mozc
     librewolf
     mpv
     tofi
@@ -19,6 +17,7 @@
     wofi
     wireguard-tools
     networkmanagerapplet
+    kdePackages.fcitx5-configtool
     xfce.thunar
 
     # CLI

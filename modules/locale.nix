@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   # Set your time zone.
   time.timeZone = "Europe/Stockholm";
 
@@ -19,10 +19,26 @@
 
   console.keyMap = "uk"; # Configure console keymap
 
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    GLFW_IM_MODULE = "ibus";
+  };
+
   i18n.inputMethod = {
+    enable = true;
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
+      addons = with pkgs; [
+        fcitx5-mozc-ut
+        fcitx5-tokyonight
+        fcitx5-mellow-themes
+        fcitx5-material-color
+        fcitx5-gtk
+        kdePackages.fcitx5-configtool
+      ];
     };
   };
 }
