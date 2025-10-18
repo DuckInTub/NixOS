@@ -32,18 +32,21 @@
     gcc
     gh
     git
+    hyprsunset
     neovim # WARN: Do not forget an editor!
     nh
-    swaybg
     nixd
     pfetch-rs
     playerctl
     ripgrep
-    unzip
-    stow
     sqlite
+    stow
+    swaybg
     tmux
+    unzip
     wget
     wl-clipboard
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
   ];
 }
