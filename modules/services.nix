@@ -13,8 +13,7 @@
     settings = {
       terminal.vt = 1;
       default_session = {
-        command = "tuigreet hyprland";
-        user = "isak";
+        command = "tuigreet --time --cmd hyprland";
       };
     };
   };
