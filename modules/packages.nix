@@ -9,15 +9,16 @@
     alacritty
     anki
     discord
+    kdePackages.fcitx5-configtool
     librewolf
+    loupe
     mpv
-    tofi
+    networkmanagerapplet
     nwg-look
     super-productivity
-    wofi
+    tofi
     wireguard-tools
-    networkmanagerapplet
-    kdePackages.fcitx5-configtool
+    wofi
     xfce.thunar
 
     # CLI
@@ -26,25 +27,35 @@
     brightnessctl
     btop
     dropbox
+    dunst
     fd
     fzf
     gcc
     gh
     git
+    hypridle
+    hyprland-qt-support
+    hyprlandPlugins.hyprscrolling
+    hyprlang
+    hyprlock
+    hyprpolkitagent
     hyprsunset
     neovim # WARN: Do not forget an editor!
     nh
     nixd
     pfetch-rs
     playerctl
+    python3
     ripgrep
     sqlite
     stow
     swaybg
     tmux
+    tuigreet
     unzip
     wget
     wl-clipboard
+    xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
   ];
