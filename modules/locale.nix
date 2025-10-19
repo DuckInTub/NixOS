@@ -20,7 +20,6 @@
   console.keyMap = "uk"; # Configure console keymap
 
   environment.variables = {
-    GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     GLFW_IM_MODULE = "ibus";

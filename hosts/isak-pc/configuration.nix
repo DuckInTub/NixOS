@@ -15,11 +15,19 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    viAlias = true;
+  users.defaultUserShell = pkgs.fish;
+
+  programs = {
+    fish = {
+     enable = true;
+    };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      vimAlias = true;
+      viAlias = true;
+    };
   };
 
   # This value determines the NixOS release from which the default
