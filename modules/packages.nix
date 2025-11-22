@@ -10,6 +10,10 @@
     anki
     discord
     kdePackages.fcitx5-configtool
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+    dracula-qt5-theme
+    dracula-icon-theme
     librewolf
     loupe
     mpv
@@ -19,6 +23,10 @@
     tofi
     wireguard-tools
     wofi
+    nwg-menu
+    nwg-bar
+    nwg-panel
+    nwg-clipman
     xfce.thunar
 
     # CLI
@@ -26,6 +34,7 @@
     alejandra
     brightnessctl
     btop
+    cargo
     dropbox
     dunst
     fd
@@ -33,6 +42,7 @@
     gcc
     gh
     git
+    gvfs
     hypridle
     hyprland-qt-support
     hyprlandPlugins.hyprscrolling
@@ -58,5 +68,8 @@
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
+    xdg-utils
+    xdg-user-dirs
+    xdg-user-dirs-gtk
   ];
 }

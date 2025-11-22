@@ -1,4 +1,4 @@
-{
+{pkgs, user, ...}: {
   # List services that you want to enable:
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
@@ -13,7 +13,8 @@
     settings = {
       terminal.vt = 1;
       default_session = {
-        command = "tuigreet --time --cmd hyprland";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+        user = "${user}";
       };
     };
   };

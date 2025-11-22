@@ -9,5 +9,6 @@
     ./packages.nix
     ./services.nix
     ./user.nix
+    ./qt.nix
   ];
 }
