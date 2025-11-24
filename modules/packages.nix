@@ -9,25 +9,31 @@
     alacritty
     anki
     discord
-    kdePackages.fcitx5-configtool
-    libsForQt5.qt5ct
-    kdePackages.qt6ct
-    dracula-qt5-theme
+    drawing
     dracula-icon-theme
+    dracula-qt5-theme
+    kdePackages.fcitx5-configtool
+    kdePackages.qt6ct
     librewolf
+    libsForQt5.qt5ct
     loupe
+    swaynotificationcenter
     mpv
     networkmanagerapplet
+    wlogout
+    nwg-clipman
+    nwg-displays
     nwg-look
+    nwg-menu
+    nwg-panel
+    pavucontrol
     super-productivity
     tofi
+    ungoogled-chromium
     wireguard-tools
     wofi
-    nwg-menu
-    nwg-bar
-    nwg-panel
-    nwg-clipman
     xfce.thunar
+    chromium
 
     # CLI
     acpi
@@ -35,21 +41,27 @@
     brightnessctl
     btop
     cargo
+    cliphist
+    ddcutil
     dropbox
-    dunst
     fd
     fzf
     gcc
     gh
+    go
     git
     gvfs
     hypridle
-    hyprland-qt-support
+    hyprshot
     hyprlandPlugins.hyprscrolling
+    hyprland-qt-support
     hyprlang
     hyprlock
+    hyprpanel
     hyprpolkitagent
     hyprsunset
+    ironbar
+    i2c-tools
     neovim # WARN: Do not forget an editor!
     nh
     nixd
@@ -68,8 +80,8 @@
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
-    xdg-utils
     xdg-user-dirs
     xdg-user-dirs-gtk
+    xdg-utils
   ];
 }

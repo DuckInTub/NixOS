@@ -16,6 +16,8 @@
   fonts = {
     packages = with pkgs; [
       nerd-fonts.hack
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.noto
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
