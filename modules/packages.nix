@@ -8,19 +8,19 @@
     # Desktop
     alacritty
     anki
+    chromium
     discord
-    drawing
     dracula-icon-theme
     dracula-qt5-theme
+    drawing
+    fuzzel
     kdePackages.fcitx5-configtool
     kdePackages.qt6ct
     librewolf
     libsForQt5.qt5ct
     loupe
-    swaynotificationcenter
     mpv
     networkmanagerapplet
-    wlogout
     nwg-clipman
     nwg-displays
     nwg-look
@@ -28,12 +28,13 @@
     nwg-panel
     pavucontrol
     super-productivity
+    swaynotificationcenter
     tofi
-    fuzzel
     ungoogled-chromium
     wireguard-tools
+    wlogout
     xfce.thunar
-    chromium
+    zotero
 
     # CLI
     acpi
