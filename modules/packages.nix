@@ -29,9 +29,9 @@
     pavucontrol
     super-productivity
     tofi
+    fuzzel
     ungoogled-chromium
     wireguard-tools
-    wofi
     xfce.thunar
     chromium
 
@@ -77,6 +77,8 @@
     unzip
     wget
     wl-clipboard
+    when
+    calcurse
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
