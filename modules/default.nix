@@ -3,7 +3,7 @@
     ./audio.nix
     ./bootloader.nix
     ./fonts.nix
-    ./hyprland.nix
+    ./wayland.nix
     ./locale.nix
     ./networking.nix
     ./packages.nix

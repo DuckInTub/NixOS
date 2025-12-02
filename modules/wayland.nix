@@ -5,6 +5,7 @@
       withUWSM = true;
       xwayland.enable = true;
     };
+    niri.enabe = true;
     uwsm.enable = true;
     hyprlock.enable = true;
     waybar.enable = true;
