@@ -31,6 +31,7 @@
     swaynotificationcenter
     tofi
     ungoogled-chromium
+    waybar
     wireguard-tools
     wlogout
     xfce.thunar
@@ -75,6 +76,7 @@
     swaybg
     tmux
     tuigreet
+    tree
     unzip
     wget
     wl-clipboard
