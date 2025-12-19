@@ -1,17 +1,17 @@
 {pkgs, ...}: {
   # Overlay to remove Noto-Tangut from noto-fonts package.
   # This font has documented conflicts with CJK renderings.
-  nixpkgs.overlays = [
-    (self: super: {
-      noto-fonts = super.noto-fonts.overrideAttrs (old: {
-        installPhase =
-          old.installPhase
-          + ''
-            rm -f $out/share/fonts/noto/NotoSerifTangut-Regular.otf
-          '';
-      });
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     noto-fonts = super.noto-fonts.overrideAttrs (old: {
+  #       installPhase =
+  #         old.installPhase
+  #         + ''
+  #           rm -f $out/share/fonts/noto/NotoSerifTangut-Regular.otf
+  #         '';
+  #     });
+  #   })
+  # ];
 
   fonts = {
     packages = with pkgs; [
