@@ -40,6 +40,7 @@
     nordic
     nordzy-icon-theme
     nordzy-cursor-theme
+    greetd
 
     # CLI
     acpi
