@@ -36,6 +36,10 @@
     wlogout
     xfce.thunar
     zotero
+    tokyonight-gtk-theme
+    nordic
+    nordzy-icon-theme
+    nordzy-cursor-theme
 
     # CLI
     acpi

@@ -6,19 +6,25 @@
     HandleLidSwitchExternalPower = "ignore";
   };
 
-  services.greetd = {
+  services.xserver.displayManager.lightdm = {
     enable = true;
-    restart = true;
-    useTextGreeter = true;
-    settings = {
-      terminal.vt = 1;
-      default_session = {
-        command = ''
-          ${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session \
-          --sessions ${pkgs.hyprland}/share/wayland-sessions:${pkgs.niri}/share/wayland-sessions
-        '';
-        user = "${user}";
-      };
-    };
+    greeters.gtk.enable = true;
+    greeters.gtk.theme = "Nord";
   };
+
+  # services.greetd = {
+  #   enable = true;
+  #   restart = true;
+  #   useTextGreeter = true;
+  #   settings = {
+  #     terminal.vt = 1;
+  #     default_session = {
+  #       command = ''
+  #         ${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session \
+  #         --sessions ${pkgs.hyprland}/share/wayland-sessions:${pkgs.niri}/share/wayland-sessions
+  #       '';
+  #       user = "${user}";
+  #     };
+  #   };
+  # };
 }
