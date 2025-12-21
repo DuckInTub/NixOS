@@ -16,6 +16,10 @@
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-57-6.12.52"
+  ];
+
   users.defaultUserShell = pkgs.fish;
 
   programs = {
