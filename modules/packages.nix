@@ -40,7 +40,9 @@
     nordic
     nordzy-icon-theme
     nordzy-cursor-theme
-    greetd
+    xorg.xinit
+    xfce.xfce4-whiskermenu-plugin
+    xfce.xfce4-clipman-plugin
 
     # CLI
     acpi
@@ -77,6 +79,8 @@
     python3
     ripgrep
     sqlite
+    lua-language-server
+    stylua
     stow
     swaybg
     tmux

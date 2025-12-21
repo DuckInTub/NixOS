@@ -5,4 +5,5 @@
     description = "Isak";
     extraGroups = ["networkmanager" "wheel"];
   };
+  users.extraUsers.greeter.extraGroups = [ "video" "input" ];
 }

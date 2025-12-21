@@ -20,8 +20,8 @@
             --remember-session \
             --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions \
             --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions \
-            --theme 'border=indigo;text=white;prompt=white;time=white;action=61;button=110;container=silver;input=75'
         '';
+        # --theme 'border=indigo;text=white;prompt=white;time=white;action=61;button=110;container=outer_space;input=75'
         user = "greeter"; # Recommended to run the greeter as 'greeter'
       };
     };
